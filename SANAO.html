@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SANAO Project - Commander's Inspection Ver.</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f0f2f5; color: #333; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .header { text-align: center; border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 20px; }
+        .header h1 { color: #1a73e8; margin: 0; }
+        .user-info { text-align: right; margin-bottom: 20px; }
+        .user-info span { font-weight: bold; }
+        .login-btn, .logout-btn { background-color: #4285F4; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        .logout-btn { background-color: #db4437; }
+        .content-box { border: 1px solid #ccc; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        .content-box h2 { margin-top: 0; }
+        .disabled { background-color: #ccc; cursor: not-allowed; }
+        .progress-bar { width: 100%; background-color: #e0e0e0; border-radius: 5px; margin-top: 5px; }
+        .progress { width: 0%; height: 20px; background-color: #4caf50; border-radius: 5px; text-align: center; color: white; line-height: 20px; }
+    </style>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>SANAO AI 특수부대 작전 상황판</h1>
+        <p>'72시간 신뢰 회복 작전' 중간 점검 버전</p>
+    </div>
+
+    <div class="user-info">
+        <span id="user-display">로그인 필요</span>
+        <button id="auth-btn" class="login-btn">구글로 로그인하기</button>
+    </div>
+
+    <div class="content-box">
+        <h2>1. 방문자 화면 & 로그인 기능</h2>
+        <p>외부 방문자가 회원가입 및 로그인을 할 수 있는 기능입니다.</p>
+        <div class="progress-bar"><div class="progress" style="width: 95%;">95%</div></div>
+        <p><strong>상태:</strong> <span id="login-status" style="color: green; font-weight:bold;">설치 완료. 테스트 가능.</span></p>
+    </div>
+
+    <div class="content-box">
+        <h2>2. AI 플레이스 자동 진단 기능</h2>
+        <p>플레이스 주소를 입력하면 AI가 자동으로 문제점을 진단합니다.</p>
+        <div class="progress-bar"><div class="progress" style="width: 50%; background-color: #ff9800;">50%</div></div>
+        <p><strong>상태:</strong> <span style="color: orange; font-weight:bold;">개발 진행 중. 현재 버전에서 사용 불가.</span></p>
+        <button class="disabled">진단 시작하기 (비활성화)</button>
+    </div>
+
+    <div class="content-box">
+        <h2>3. AI 영수증 리뷰 답글 기능</h2>
+        <p>리뷰 내용에 맞춰 AI가 최적의 답글 초안을 생성합니다.</p>
+        <div class="progress-bar"><div class="progress" style="width: 15%; background-color: #f44336;">15%</div></div>
+        <p><strong>상태:</strong> <span style="color: red; font-weight:bold;">설계 완료. 현재 버전에서 사용 불가.</span></p>
+        <button class="disabled">리뷰 답글 생성 (비활성화)</button>
+    </div>
+</div>
+
+<script>
+    // Firebase 설정 (사령관님의 실제 값으로 교체 필요)
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_AUTH_DOMAIN",
+      projectId: "YOUR_PROJECT_ID",
+      // ...
+    };
+
+    // Firebase 초기화
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+    }
+    const auth = firebase.auth();
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    const userDisplay = document.getElementById('user-display');
+    const authBtn = document.getElementById('auth-btn');
+
+    // 로그인 상태 감지
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+            // 사용자가 로그인한 경우
+            userDisplay.textContent = user.displayName + ' 님, 반갑습니다.';
+            authBtn.textContent = '로그아웃';
+            authBtn.className = 'logout-btn';
+            authBtn.onclick = () => auth.signOut();
+        } else {
+            // 사용자가 로그아웃한 경우
+            userDisplay.textContent = '로그인 필요';
+            authBtn.textContent = '구글로 로그인하기';
+            authBtn.className = 'login-btn';
+            authBtn.onclick = () => auth.signInWithPopup(provider);
+        }
+    });
+</script>
+
+</body>
+</html>
