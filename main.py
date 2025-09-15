@@ -24,10 +24,11 @@ def get_sanao_data():
 # 특정 URL 주소로 접속했을 때 어떤 HTML 화면을 보여줄지 결정합니다.
 
 # 기본 주소 ('/') 또는 '/login'으로 접속 시, login.html을 보여줍니다.
+# 기본 주소 ('/') 또는 '/login'으로 접속 시, index.html을 보여줍니다.
 @app.route('/')
 @app.route('/login')
 def login_page():
-    return render_template('login.html')
+    return render_template('index.html')
 
 # '/dashboard' 주소로 접속 시, main_dashboard.html을 보여줍니다.
 @app.route('/dashboard')
