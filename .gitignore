@@ -1,0 +1,9 @@
+# Python Caches
+__pycache__/
+*.pyc
+
+# Virtual Environment Folder
+venv/
+
+# VS Code Editor Folder
+.vscode/
