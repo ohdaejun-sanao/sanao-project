@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SANAO - 소상공인 AI 솔루션</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f0f2f5; margin: 0; padding: 20px; }
+        .container { max-width: 900px; margin: 20px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        h1, h2 { text-align: center; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
+        .feature-card { border: 1px solid #ddd; border-radius: 8px; padding: 20px; text-align: center; transition: box-shadow 0.3s; }
+        .feature-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .feature-card h3 { margin-top: 0; }
+        .feature-card p { font-size: 0.9em; color: #606770; }
+        .feature-card .btn { background-color: #1877f2; color: white; padding: 10px 15px; border-radius: 6px; text-decoration: none; display: inline-block; margin-top: 15px; }
+        .locked p { font-style: italic; color: #999; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>SANAO AI 솔루션</h1>
+        
+        <div id="dashboard">
+            <h2>핵심 기능</h2>
+            <div class="feature-grid">
+                
+                <div class="feature-card">
+                    <h3>✅ 플레이스 점검</h3>
+                    <p>AI가 사장님의 네이버 플레이스를 정밀 진단하고, 점수와 개선점을 보고합니다.</p>
+                    <a href="#" class="btn">점검 시작하기</a>
+                </div>
+
+                <div class="feature-card">
+                    <h3>✍️ 영수증 리뷰 작성</h3>
+                    <p>AI가 긍정/부정 리뷰에 맞는 답글 초안을 몇 초 만에 작성해드립니다.</p>
+                    <a href="#" class="btn">답글 생성하기</a>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>📝 블로그 포스팅</h3>
+                    <p>몇 가지 키워드만으로 전문가 수준의 블로그 포스트 뼈대를 완성합니다.</p>
+                    <a href="#" class="btn">포스트 생성하기</a>
+                </div>
+
+                <div class="feature-card">
+                    <h3>🤖 ChatGPT 기능</h3>
+                    <p>무엇이든 물어보세요. AI 챗봇이 사장님의 모든 질문에 답변해드립니다.</p>
+                    <a href="#" class="btn">질문하기</a>
+                </div>
+
+                <div class="feature-card">
+                    <h3>📈 순위 오르는 법 검색</h3>
+                    <p>네이버 플레이스 순위 상승에 대한 최신 전략과 노하우를 검색합니다.</p>
+                    <a href="#" class="btn">전략 검색하기</a>
+                </div>
+
+                <div class="feature-card locked">
+                    <h3>➕ 추가 기능 (준비 중)</h3>
+                    <p>회원 가입 시 더 많은 기능들을 사용하실 수 있습니다.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
