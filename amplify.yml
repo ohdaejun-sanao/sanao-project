@@ -3,22 +3,7 @@ backend:
   phases:
     build:
       commands:
-        - '# Install dependencies'
         - pip install -r requirements.txt
-frontend:
-  phases:
-    preBuild:
-      commands:
-        - '# This section can be left empty for a Flask app'
-    build:
-      commands:
-        - '# This section can be left empty for a Flask app'
-  artifacts:
-    baseDirectory: /
-    files:
-      - '**/*'
-  cache:
-    paths: []
+appRoot: .
 start:
-  - '# Start Gunicorn server'
   - gunicorn --bind :$PORT main:app
